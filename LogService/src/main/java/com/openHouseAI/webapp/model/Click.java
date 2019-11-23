@@ -10,15 +10,16 @@ public class Click extends Actions {
 	private int locationY;
 	
 	public Click(int actionId, LocalTime time, String type, Users user, int locationX, int locationY) {
-		super(actionId, time, type, user);
 		this.locationX = locationX;
 		this.locationY = locationY;
 	}
+		
 
 	public Click() {
-		
+
 	}
-	
+
+
 	public int getLocationX() {
 		return locationX;
 	}
@@ -35,7 +36,5 @@ public class Click extends Actions {
 		this.locationY = locationY;
 	}
 	
-	
-	
-	
+		
 }

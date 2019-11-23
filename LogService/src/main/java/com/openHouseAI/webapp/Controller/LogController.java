@@ -41,10 +41,25 @@ public class LogController {
 		action.setType("Click"); 
 		action.setTime(LocalTime.now());
 		action.setUser(user);
+		
+		if(action.getType().equalsIgnoreCase("Click")) {
+			Click click = new Click();
+			click.setLocationX(1234);
+			click.setLocationY(123456);
+			//entityManager.persist(click);
+		} else if(action.getType().equalsIgnoreCase("View")) {
+			View view = new View();
+			view.setViewedId("dcyew");
+		} else {
+			Navigate navigate = new Navigate();
+			navigate.setPageFrom("fwergf");
+			navigate.setPageTo("dcvbre");
+		}
+		
 		System.out.println(action);	
 		user.getActions().add(action); 
 		
-		actionsRepository.save(action);
+		//actionsRepository.save(action);
 		/*SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory(); 
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -65,7 +80,8 @@ public class LogController {
 		session.close(); */
 		logRepository.save(user);
 		
-		//Optional<Users> u = logRepository.findById("100");
-		return new ResponseEntity<Object>("ok",HttpStatus.OK);
+		Optional<Users> u = logRepository.findById("100");
+		Users opt = u.get();
+		return new ResponseEntity<Object>(opt,HttpStatus.OK);
 	}
 }

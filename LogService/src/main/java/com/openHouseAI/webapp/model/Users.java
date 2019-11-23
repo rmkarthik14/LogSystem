@@ -3,6 +3,7 @@ package com.openHouseAI.webapp.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -17,7 +18,7 @@ public class Users {
 	@Id
 	private String userId;
 	private String sessionId;
-	@OneToMany 
+	@OneToMany(cascade=CascadeType.ALL) 
 	@NotFound(action = NotFoundAction.IGNORE) 
 	private List<Actions> actions = new ArrayList<>();
 	
